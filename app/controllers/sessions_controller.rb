@@ -22,3 +22,4 @@ class SessionsController < Clearance::SessionsController
     params[:session][:email_or_username]
   end
 end
+
