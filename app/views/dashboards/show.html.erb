@@ -1,1 +1,8 @@
 <h1>Dash </h1>
+
+<%= form_for @challenge do |form| %>
+<%= form.text_field :body, placeholder: "Challenge Here", required: true%>
+<%= form.submit "Challenge" %>
+<%end %>
+
+<%= render @challenges%>

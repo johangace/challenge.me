@@ -1,6 +1,7 @@
 class DashboardsController < ApplicationController
 
   def show
-    render
+    @challenge = Challenge.new
+    @challenges= current_user.challenges
   end
 end
