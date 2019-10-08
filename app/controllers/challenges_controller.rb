@@ -12,7 +12,16 @@ class ChallengesController < ApplicationController
   private
 
   def challenge_params
-    params.require(:challenge).permit(:body)
+    {content: content_from_params }
+  
+  end
+
+  def content_from_params
+    TextChallenge.new(content_params)
+  end
+
+  def content_params
+    params.require(:challenge).require(:content).permit(:body)
   end
 
   def redirect_options_for(challenge)

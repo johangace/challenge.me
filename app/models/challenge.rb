@@ -1,6 +1,7 @@
 class Challenge < ApplicationRecord
   belongs_to :user
-  validates :body, presence: true, length: { in: 1..200}
+  belongs_to :content, polymorphic: true
+
   validates :user, presence: true
 
   default_scope { order(created_at: :desc) }

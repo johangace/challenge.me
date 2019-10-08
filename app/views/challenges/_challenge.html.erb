@@ -1,6 +1,6 @@
 <div> 
 <%= link_to challenge.username, challenge.user %>
-  <%= challenge.body %>
+  <%= challenge.content.body %>
   <%= link_to challenge do %>
   <%= time_ago_in_words(challenge.created_at)%> ago
   <% end %>
