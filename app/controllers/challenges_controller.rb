@@ -17,11 +17,18 @@ class ChallengesController < ApplicationController
   end
 
   def content_from_params
-    TextChallenge.new(content_params)
+    case params[:challenge][:content_type]
+      when "TextChallenge" then TextChallenge.new(text_challenge_content_params)
+      when "PhotoChallenge" then PhotoChallenge.new(photo_challenge_content_params)
+    end
   end
 
-  def content_params
+  def text_challenge_content_params
     params.require(:challenge).require(:content).permit(:body)
+  end
+
+  def photo_challenge_content_params
+    params.require(:challenge).require(:content).permit(:image)
   end
 
   def redirect_options_for(challenge)
