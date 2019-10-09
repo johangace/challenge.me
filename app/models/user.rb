@@ -18,4 +18,8 @@ class User < ApplicationRecord
     liked_challenge_ids.include?(challenge.id)
   end
 
+  def to_param
+    username
+  end
+
 end
