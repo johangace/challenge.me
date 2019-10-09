@@ -1,8 +1,8 @@
 <div> 
+<%= avatar(challenge.user) %>
 <%= link_to challenge.username, challenge.user %>
   <%= render challenge.content %>
   <%= link_to challenge do %>
   <%= time_ago_in_words(challenge.created_at)%> ago
-  <% end %>
-
-  </div>
+<% end %>
+</div>
