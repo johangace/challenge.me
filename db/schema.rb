@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191009161628) do
+ActiveRecord::Schema.define(version: 20191012212108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20191009161628) do
     t.integer "content_id", null: false
     t.index ["content_type", "content_id"], name: "index_challenges_on_content_type_and_content_id"
     t.index ["user_id"], name: "index_challenges_on_user_id"
+  end
+
+  create_table "following_relationships", force: :cascade do |t|
+    t.integer "follower_id", null: false
+    t.integer "followed_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id", "followed_user_id"], name: "index_follower_following_relationship", unique: true
   end
 
   create_table "likes", force: :cascade do |t|
@@ -64,6 +72,8 @@ ActiveRecord::Schema.define(version: 20191009161628) do
   end
 
   add_foreign_key "challenges", "users"
+  add_foreign_key "following_relationships", "users", column: "followed_user_id"
+  add_foreign_key "following_relationships", "users", column: "follower_id"
   add_foreign_key "likes", "challenges"
   add_foreign_key "likes", "users"
 end
