@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post "text_challenges" => "challenges#create", defaults: { content_type: TextChallenge }
   post "photo_challenges" => "challenges#create", defaults: { content_type: PhotoChallenge }
 
-  resources :challenges, only:[ :show] do
+  resources :challenges, only:[:show] do
     member do
       post "like" => "likes#create"
       delete "unlike" => "likes#destroy"
