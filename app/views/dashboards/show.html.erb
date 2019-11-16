@@ -1,20 +1,10 @@
 <h1>Dash </h1>
 
-<%= form_for @challenge do |form| %>
-<%= form.hidden_field :content_type , value: "TextChallenge"%>
-<%= form.fields_for :content do |content_form|%>
-<%= content_form.text_field :body, placeholder: "Challenge Here", required: true%>
+<%=challenge_form_for(TextChallenge) do |form| %>
+  <%= form.text_field :body, placeholder: "Challenge Here", required: true %>
+<% end %>
 
-<%= content_form.submit "Challenge" %>
-<%end %>
-<%end%>
-
-<%= form_for @challenge do |form| %>
-<%= form.hidden_field :content_type , value: "PhotoChallenge"%>
-<%= form.fields_for :content do |content_form|%>
-<%= content_form.file_field :image, required: true%>
-
-<%= content_form.submit "Challenge" %>
-<%end %>
-<%end%>
-<%= render @challenges%>
+<%=challenge_form_for(TextChallenge) do |form| %>
+  <%= form.file_field :image, required: true %>
+<% end %>
+<%= render @challenges%> 
