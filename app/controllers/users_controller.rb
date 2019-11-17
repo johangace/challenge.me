@@ -6,7 +6,7 @@ class UsersController < Clearance::UsersController
 
   def show
     @user= User.find_by(username: params[:id])
-    @challenges = @user.challenges
+    @timeline = Timeline.new([@user])
   end
 
   private

@@ -1,7 +1,6 @@
 class DashboardsController < ApplicationController
 
   def show
-    @challenge = Challenge.new
-    @challenges= current_user.timeline_challenges
+  @dashboard =  Dashboard.new(current_user)
   end
 end
