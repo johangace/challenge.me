@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :hashtags, only: [:show]
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, only: [:create]
 
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
       post "follow" => "followed_users#create"
       delete "unfollow" => "followed_users#destroy"
     end
+
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
